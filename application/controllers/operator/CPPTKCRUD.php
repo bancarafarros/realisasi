@@ -103,7 +103,7 @@ class CPPTKCRUD extends CI_Controller {
 		redirect(base_url('operator/CPPTKCRUD/index'));
 	}
 public function print(){
-        $data['pptk'] = $this->mlaporan->laporan_pptk('tb_pengguna')->result();
+        $data['pptk'] = $this->MLaporan->laporan_pptk('tb_pengguna')->result();
         $this->load->view('operator/print_pptk', $data);
       }
 }

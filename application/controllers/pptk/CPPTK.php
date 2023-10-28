@@ -11,9 +11,9 @@ class CPPTK extends CI_Controller {
     }
 
         public function index() {
-            $data['kegiatan']= $this->mpptk->tampilData()->result();
-            $data['pagu_anggaran'] = $this->mkegiatancrud->sum('tb_kegiatan', 'pagu_anggaran', );
-            $data['nominal'] = $this->mkegiatancrud->sum('tb_kegiatan', 'nominal', );
+            $data['kegiatan']= $this->MPPTK->tampilData()->result();
+            $data['pagu_anggaran'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'pagu_anggaran', );
+            $data['nominal'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'nominal', );
 
             $this->load->view('pptk/VHeader');
             $this->load->view('pptk/VSidebar');
@@ -23,7 +23,7 @@ class CPPTK extends CI_Controller {
 
         public function halamanInput($id_kegiatan) {
             $where = array('id_kegiatan' => $id_kegiatan);
-            $data['kegiatan'] = $this->mpptk->halamanInput($where, 'tb_kegiatan')->result();
+            $data['kegiatan'] = $this->MPPTK->halamanInput($where, 'tb_kegiatan')->result();
 
             $this->load->view('/pptk/VHeader');
             $this->load->view('/pptk/VSidebar');

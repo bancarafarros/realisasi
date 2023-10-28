@@ -11,9 +11,9 @@ class CBendahara extends CI_Controller {
     }
     
     public function index () {
-        $data['kegiatan']= $this->mbendahara->tampilData()->result();
-        $data['pagu_anggaran'] = $this->mkegiatancrud->sum('tb_kegiatan', 'pagu_anggaran', );
-        $data['nominal'] = $this->mkegiatancrud->sum('tb_kegiatan', 'nominal', );
+        $data['kegiatan']= $this->MBendahara->tampilData()->result();
+        $data['pagu_anggaran'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'pagu_anggaran', );
+        $data['nominal'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'nominal', );
 
         $this->load->view('bendahara/VHeader');
         $this->load->view('bendahara/VSidebar');
@@ -23,7 +23,7 @@ class CBendahara extends CI_Controller {
 
     public function halamanInput($id_kegiatan) {
         $where = array('id_kegiatan' => $id_kegiatan);
-        $data['kegiatan'] = $this->mbendahara->halamanInput($where, 'tb_kegiatan')->result();
+        $data['kegiatan'] = $this->MBendahara->halamanInput($where, 'tb_kegiatan')->result();
 
         $this->load->view('/bendahara/VHeader');
         $this->load->view('/bendahara/VSidebar');

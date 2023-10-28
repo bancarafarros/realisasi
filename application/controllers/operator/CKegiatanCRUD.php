@@ -12,15 +12,15 @@
 
         public function index() {
             // $this->load->model('MKegiatanCRUD');
-            $data['kegiatan'] = $this->mkegiatancrud->tampilData()->result();
+            $data['kegiatan'] = $this->MKegiatanCRUD->tampilData()->result();
             
-            $data['user'] = $this->mpptkcrud->tampilData()->result();
-            $data['keg'] = $this->mkegiatancrud->count('tb_kegiatan');
-            $data['bukti_tagihan'] = $this->mkegiatancrud->count('tb_kegiatan', 'bukti_tagihan');
-            $data['bukti_transfer'] = $this->mkegiatancrud->count('tb_kegiatan', 'bukti_transfer') ;
-            $data['pagu_anggaran'] = $this->mkegiatancrud->sum('tb_kegiatan', 'pagu_anggaran', );
-            $data['nominal'] = $this->mkegiatancrud->sum('tb_kegiatan', 'nominal', );
-            $data['PPTK'] = $this->mkegiatancrud->count('tb_pengguna', ' PPTK') ;
+            $data['user'] = $this->MPPTKCRUD->tampilData()->result();
+            $data['keg'] = $this->MKegiatanCRUD->count('tb_kegiatan');
+            $data['bukti_tagihan'] = $this->MKegiatanCRUD->count('tb_kegiatan', 'bukti_tagihan');
+            $data['bukti_transfer'] = $this->MKegiatanCRUD->count('tb_kegiatan', 'bukti_transfer') ;
+            $data['pagu_anggaran'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'pagu_anggaran', );
+            $data['nominal'] = $this->MKegiatanCRUD->sum('tb_kegiatan', 'nominal', );
+            $data['PPTK'] = $this->MKegiatanCRUD->count('tb_pengguna', ' PPTK') ;
             
 
             $this->load->view('operator/VHeader');
@@ -124,7 +124,7 @@
         public function halamanDetail($id_kegiatan) {
             $where = array('id_kegiatan' => $id_kegiatan);
             // $this->load->model('MKegiatanCRUD');
-            $data['kegiatan'] = $this->mkegiatancrud->halamanUpdate($where, 'tb_kegiatan')->result();
+            $data['kegiatan'] = $this->MKegiatanCRUD->halamanUpdate($where, 'tb_kegiatan')->result();
             $this->load->view('/operator/VHeader');
             $this->load->view('/operator/VSidebar');
             $this->load->view('/operator/VKegiatanDetail', $data);
@@ -134,7 +134,7 @@
         public function halamanUpdate($id_kegiatan) {
             $where = array('id_kegiatan' => $id_kegiatan);
             // $this->load->model('MKegiatanCRUD');
-            $data['kegiatan'] = $this->mkegiatancrud->halamanUpdate($where, 'tb_kegiatan')->result();
+            $data['kegiatan'] = $this->MKegiatanCRUD->halamanUpdate($where, 'tb_kegiatan')->result();
             $this->load->view('/operator/VHeader');
             $this->load->view('/operator/VSidebar');
             $this->load->view('/operator/VKegiatanUpdate', $data);
@@ -185,7 +185,7 @@
             redirect(base_url('operator/CKegiatanCRUD/index'));
         }
  public function print(){
-        $data['kegiatan'] = $this->mkegiatancrud->tampilData('tb_kegiatan')->result();
+        $data['kegiatan'] = $this->MKegiatanCRUD->tampilData('tb_kegiatan')->result();
         $this->load->view('operator/print_kegiatan_operator', $data);
       }
     }

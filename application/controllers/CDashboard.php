@@ -3,7 +3,7 @@
 class CDashboard extends CI_Controller {
 
     public function index () {
-        $data['kegiatan']= $this->mdashboard->tampilData()->result();
+        $data['kegiatan']= $this->MDashboard->tampilData()->result();
 
         $this->load->view('VHeader');
         $this->load->view('VSidebar');
